@@ -3,20 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Neural Link | Upgrade Your Mind</title>
+    <title>Terminal_Access // ROOT</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&family=VT323&family=Bungee+Shade&display=swap');
-
-        /* --- MODERN AESTHETIC VARIABLES --- */
-        :root {
-            --bg-color: #0f172a;
-            --text-color: #f8fafc;
-            --primary: #3b82f6;
-            --accent: #8b5cf6;
-            --font-main: 'Inter', sans-serif;
-            --font-terminal: 'VT323', monospace;
-            --font-prank: 'Bungee Shade', 'Comic Sans MS', cursive;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rubik+Glitch&display=swap');
 
         * {
             box-sizing: border-box;
@@ -26,81 +15,282 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-main);
+            background-color: #050505;
+            color: #0f0;
+            font-family: 'Share Tech Mono', monospace;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            transition: all 0.5s ease;
+            transition: background-color 0.5s ease;
         }
 
-        /* --- MODERN UI COMPONENTS --- */
-        #modern-ui {
-            text-align: center;
+        /* --- STAGE 1: TERMINAL BUTTON --- */
+        #init-ui {
             z-index: 10;
-            position: relative;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 3rem 4rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            max-width: 600px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 50px;
+        .term-btn {
+            background: transparent;
+            color: #0f0;
+            border: 2px solid #0f0;
+            padding: 1rem 2rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2), inset 0 0 10px rgba(0, 255, 0, 0.1);
+            transition: all 0.2s;
             position: relative;
-            box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.3);
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.4);
+        .term-btn:hover {
+            background: #0f0;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
         }
 
-        /* Ambient Background Orbs */
-        .orb {
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* --- STAGE 2: TERMINAL SEQUENCE --- */
+        #terminal-ui {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: #020202;
+            padding: 2rem;
+            font-size: 1.2rem;
+            z-index: 50;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .term-line {
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        .error-text {
+            color: #ff3333;
+            text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+        }
+
+        /* --- STAGE 3: THE CHAOS PRANK --- */
+        body.chaos-mode {
+            background: radial-gradient(circle at center, #1a0033 0%, #000000 100%);
+            animation: pulseBg 2s infinite alternate;
+        }
+
+        #prank-ui {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 100;
+            pointer-events: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chaos-mode #prank-ui {
+            display: flex;
+        }
+
+        /* RGB Split Glitch Font */
+        .glitch-text {
+            font-family: 'Rubik Glitch', system-ui;
+            font-size: 12vw;
+            color: #fff;
+            position: relative;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
             position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: 0;
-            animation: float 10s infinite ease-in-out alternate;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
         }
-        .orb-1 {
-            width: 300px; height: 300px;
-            background: var(--primary);
+
+        .glitch-text::before {
+            left: 4px;
+            text-shadow: -4px 0 #ff00ff; /* Neon Magenta */
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+
+        .glitch-text::after {
+            left: -4px;
+            text-shadow: 4px 0 #00ffff; /* Neon Cyan */
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        .floating-hacker-meme {
+            position: absolute;
+            font-family: 'Share Tech Mono', monospace;
+            color: #ff3333;
+            font-size: 2rem;
+            text-shadow: 0 0 5px red;
+            animation: floatUp 4s infinite linear;
+            white-space: nowrap;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes pulseBg {
+            0% { background: radial-gradient(circle at center, #110011 0%, #000 100%); }
+            100% { background: radial-gradient(circle at center, #2b0033 0%, #050011 100%); }
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(20% 0 80% 0); }
+            20% { clip-path: inset(60% 0 10% 0); }
+            40% { clip-path: inset(40% 0 50% 0); }
+            60% { clip-path: inset(80% 0 5% 0); }
+            80% { clip-path: inset(10% 0 70% 0); }
+            100% { clip-path: inset(30% 0 50% 0); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(10% 0 60% 0); }
+            20% { clip-path: inset(30% 0 20% 0); }
+            40% { clip-path: inset(70% 0 10% 0); }
+            60% { clip-path: inset(20% 0 50% 0); }
+            80% { clip-path: inset(90% 0 5% 0); }
+            100% { clip-path: inset(5% 0 80% 0); }
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="init-ui">
+        <button id="start-btn" class="term-btn">>_ EXECUTE_ROOT.sh<span class="cursor">_</span></button>
+    </div>
+
+    <div id="terminal-ui"></div>
+
+    <div id="prank-ui">
+        <h1 class="glitch-text" data-text="APRIL FOOLS!">APRIL FOOLS!</h1>
+        <div id="memes-container"></div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('start-btn');
+        const initUi = document.getElementById('init-ui');
+        const terminalUi = document.getElementById('terminal-ui');
+        const prankUi = document.getElementById('prank-ui');
+        const memesContainer = document.getElementById('memes-container');
+
+        // Start the sequence
+        btn.addEventListener('click', () => {
+            initUi.style.display = 'none';
+            startTerminalPrank();
+        });
+
+        // The Terminal Typing Effect
+        function startTerminalPrank() {
+            terminalUi.style.display = 'flex';
+            
+            const hackLines = [
+                "> Initiating secure connection...",
+                "> Bypassing local firewall... SUCCESS",
+                "> Injecting payload into mainframe...",
+                "> Extracting user credentials... [14%]",
+                "> Extracting user credentials... [58%]",
+                "> Extracting user credentials... [99%]",
+                "> SYSTEM ALERT: Unauthorized access detected.",
+                "> Attempting to block intruder...",
+                "> FAILED.",
+                "> rm -rf /",
+                "> FATAL SYSTEM ERROR. KERNEL PANIC."
+            ];
+
+            let lineIndex = 0;
+            
+            function typeLine() {
+                if (lineIndex < hackLines.length) {
+                    const p = document.createElement('p');
+                    p.className = 'term-line';
+                    
+                    // Make the last few lines look like errors
+                    if (lineIndex >= 6) {
+                        p.classList.add('error-text');
+                    }
+                    
+                    p.innerText = hackLines[lineIndex];
+                    terminalUi.appendChild(p);
+                    lineIndex++;
+                    
+                    // Speed up the terminal output as it gets closer to the end
+                    let delay = Math.max(150, 600 - (lineIndex * 60));
+                    setTimeout(typeLine, delay);
+                } else {
+                    // Slight pause before the final reveal
+                    setTimeout(triggerChaos, 800);
+                }
+            }
+            
+            typeLine();
+        }
+
+        // The Upgraded Chaos Mode
+        function triggerChaos() {
+            terminalUi.style.display = 'none';
+            document.body.classList.add('chaos-mode');
+
+            // Tech/Hacker themed elements instead of basic emojis
+            const chaosElements = [
+                "⚠️ SYSTEM CORRUPT", 
+                "0x000000FF", 
+                "👾", 
+                "SEGMENTATION FAULT", 
+                "💾 DATA DELETED",
+                "NULL POINTER"
+            ];
+            
+            setInterval(() => {
+                const el = document.createElement('div');
+                el.innerText = chaosElements[Math.floor(Math.random() * chaosElements.length)];
+                el.classList.add('floating-hacker-meme');
+                
+                // Randomize horizontal position and size
+                el.style.left = (Math.random() * 90) + 'vw';
+                el.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                
+                // Randomize horizontal drift
+                const drift = (Math.random() * 20 - 10) + 'vw';
+                el.style.transform = `translateX(${drift})`;
+                
+                memesContainer.appendChild(el);
+                
+                // Cleanup DOM to prevent lag
+                setTimeout(() => el.remove(), 4000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
             top: -100px; left: -100px;
             opacity: 0.3;
         }
